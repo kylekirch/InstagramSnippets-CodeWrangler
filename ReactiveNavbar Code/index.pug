@@ -1,0 +1,22 @@
+- var links = [{ title: 'Home', url: '#home' }, { title: 'Pictures', url: '#pictures' }, { title: 'Projects', url: '#projects' }, { title: 'Blog', url: '#blog' }, { title: 'About Me', url: '#about' }, { title: 'Contact Me', url: '#contact' }];
+
+#app
+	nav.navbar
+		.hamburger
+			- for (var x = 0; x < 6; x++)
+				span
+		.nav
+			ul.links
+				each link in links
+					li
+						a(href=link.url)= link.title
+			ul.circles
+				each link in links
+					li(class=`${link.url.substring(1)}`)
+						a(href=link.url)
+							i.fas.fa-circle
+						span= link.title
+	main.container
+		each link in links
+			section(id=`${link.url.substring(1)}`, class=`${link.url.substring(1)}`)
+				h1= link.title

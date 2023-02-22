@@ -1,0 +1,273 @@
+*
+	margin: 0
+	padding: 0
+	font-family: 'PT Sans', sans-serif
+	
+main.container
+	display: flex
+	flex-wrap: wrap
+	text-align: center
+	height: 100vh
+	width: 100%
+	overflow-y: scroll
+	scroll-snap-type: y mandatory
+
+	> section
+		display: grid
+		place-items: center
+		height: 100vh
+		width: 100%
+		scroll-snap-align: start
+	
+	#home
+		background-color: #00BCD4
+	
+	#pictures
+		background-color: #8BC34A
+	
+	#projects
+		background-color: #FDD835
+	
+	#blog
+		background-color: #FF9800
+	
+	#about
+		background-color: #FF5722
+	
+	#contact
+		background-color: #7E57C2
+
+.navbar
+	color: white
+	height: 100vh
+	width: 300px
+	position: absolute
+	top: 0
+	left: 0
+	
+	.hamburger
+		cursor: pointer
+		height: 25px
+		width: 30px
+		position: fixed
+		left: 1.2rem
+		top: 2rem
+		transform: rotate(0deg)
+		transition: all .5s ease-out
+		transition-delay: .02s
+		z-index: 5
+	
+		span
+			background-color: white
+			display: block
+			position: absolute
+			height: 5px
+			width: 50%
+			opacity: 1
+			transition: all .2s ease-in-out
+	
+			&:nth-child(even)
+			left: 50%
+			border-radius: 0 9px 9px 0
+	
+			&:nth-child(odd)
+				left: 0
+				border-radius: 9px 0 0 9px
+
+			&:nth-child(1), &:nth-child(2)
+				top: 0
+
+			&:nth-child(3), &:nth-child(4)
+				top: 10px
+
+			&:nth-child(5), &:nth-child(6)
+				top: 20px
+		
+		&.open
+			left: 240px
+	
+			span
+				&:nth-child(1), &:nth-child(6)
+					transform: rotate(45deg)
+
+				&:nth-child(2), &:nth-child(5)
+					transform: rotate(-45deg)
+
+				&:nth-child(1)
+					left: 3px
+					top: 6px
+
+				&:nth-child(2)
+					left: calc(50% - 3px)
+					top: 6px
+
+				&:nth-child(3)
+					left: -50%
+					opacity: 0
+
+				&:nth-child(4)
+					left: 100%
+					opacity: 0
+
+				&:nth-child(5)
+					left: 3px
+					top: 15px
+
+				&:nth-child(6)
+					left: calc(50% - 3px)
+					top: 15px
+		
+	.nav
+		background-color: rgba(0, 0, 0, .7)
+		display: flex
+		justify-content: space-around
+		align-items: center
+		position: fixed
+		left: -230px
+		top: 0
+		height: 100vh
+		width: 300px
+		transition: all .5s ease-out
+		z-index: 2
+	
+		a
+			color: white
+			text-decoration: none
+
+		ul.links
+			transition: all .5s ease-in-out
+			width: 80%
+			opacity: 0
+			visibility: hidden
+	
+			li
+				cursor: pointer
+				list-style: none
+				margin: 2.5rem 1rem
+				text-align: right
+				text-transform: uppercase
+
+				&::before, &::after
+					display: inline-block
+					opacity: 0
+					transition: transform .3s, opacity .2s
+
+				&::before
+					margin-right: 5px
+					content: '['
+					transform: translateX(20px)
+
+				&::after
+					margin-left: 5px
+					content: ']'
+					transform: translateX(-20px)
+
+				&:hover, &:focus
+					&::before, &::after
+						opacity: 1
+						transform: translateX(0)
+		
+			&.open
+				opacity: 1
+				visibility: visible
+
+		&.open
+			left: 0
+	
+	.circles
+		transition: all .5s ease-in-out
+	
+		li
+			position: relative
+			cursor: pointer
+			font-size: 20px
+			font-weight: 700
+			list-style: none
+			margin: 2rem 0
+			margin-right: 1.4rem
+			transition: all .5s ease-in-out
+	
+			&.glow
+				-webkit-transform: scale(1.1)
+				text-shadow: #FFF 0 0 15px
+		
+			&:hover 
+				-webkit-transform: scale(.8)
+				text-shadow: #FFF 0 0 15px
+				
+				span
+					-webkit-transform: scale(1.2)
+					width: 100px
+					opacity: 1
+					visibility: visible
+		
+			span
+				height: 20px
+				width: 0
+				background-color: #455A64
+				color: white
+				font-size: 14px
+				text-align: right
+				border-radius: 24px 10px 10px 24px
+				position: absolute
+				z-index: -1
+				bottom: 0
+				left: 0
+				margin-left: 0
+				padding: 2px 10px
+				visibility: hidden
+				opacity: 0
+				transition: all .5s ease-in-out
+				white-space: nowrap
+		
+		&.open
+			margin-left: -100px
+			opacity: 0
+			visibility: hidden
+
+@media only screen and (max-width: 576px)
+	.navbar
+		width: 100%
+	
+		.hamburger
+			top: .8rem
+			left: .8rem
+	
+			&.open
+				left: calc(100vw - 60px)
+	
+		.nav
+			align-items: flex-end
+			flex-wrap: wrap
+			flex-direction: reverse
+			position: fixed
+			left: 0
+			top: calc(-100vh + 50px)
+			width: 100%
+	
+			ul.links
+				font-size: 32px
+
+				li
+					margin: 1rem
+	
+			.circles
+				display: inline-flex
+				justify-content: space-around
+				width: 50vw
+		
+				li
+					margin: 15px 0
+		
+					i
+						font-size: 16px
+				
+					span
+						display: none
+				
+				&.open
+					margin-top: -100px
+			
+			&.open
+				top: 0
+				
