@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    .container
+  .row
+    .col-md-12
+      .bmi-calculator
+        .result
+          .result-text 
+            h1
+              span#bmiValue 20.5 
+              | kg/m2
+            small#bmid Normal
+        .calculator
+          h2.text-center.calculator-title Calculate Your BMI
+          hr.calculator-hr
+          .height
+            input(class="value_range",id="height",type="range",value="72",min="10",max="100", step="1")
+            .label-height.field-text 0
+          .weight
+            input(class="value_range",id="weight",type="range",value="150",min="10",max="400", step="1")
+            .label-weight.field-text 0
+          .submit
+            input(type="submit",id="submit", value="Calculate", class="submit")
+          
+        
+    
+</body>
+</html>
